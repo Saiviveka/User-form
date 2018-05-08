@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html ng-app="Forms">
+ <head>
+     <script type="text/javascript" src="jquery-3.3.1.js"></script>
+     <script type="text/javascript" src="bootstrap.js"></script>
+     <script type="text/javascript" src="Angular.js"></script>
+     <link rel="stylesheet" href="Bootstrap.css"/>
+     <script type="text/javascript">
+     var app=angular.module("Forms",[]);
+     app.controller("Rform",function($scope){
+     $("#submit").click(function(){
+     var Firstname=$("#Firstname").val();
+     var Lastname=$("#Lastname").val();
+     var Email=$("#Email").val();
+     var Mobile=$("#Mobile").val();
+     var Address=$("#Address").val();
+     var Password=$("#Password").val();
+     var Gender=$("#Gender").val();
+     var Source=$("#Source").val();
+     var Alerts=$("#Alerts").val();
+     var dataString=$("#rform").serialize();   if(Firstname==''||Lastname==''||Email==''||Mobile==''||Address==''||Password==''||Gender==''||Source=='',Alerts=='')
+         {
+           $("#msg").html("Please fill in all the details");  
+         }
+         else
+             {
+                 $.ajax({
+                     type:'POST',
+            url:"http://localhost/Newform/Rsave.php",
+                     data: dataString,
+                     cache: false,
+                     success: function(response){
+                     $("#msg").html(response);
+     var Firstname=$("#Firstname").val("");
+     var Lastname=$("#Lastname").val("");
+     var Email=$("#Email").val("");
+     var Mobile=$("#Mobile").val("");
+     var Address=$("#Address").val("");
+     var Password=$("#Password").val("");
+     var Gender=$("#Gender").val("");
+     var Source=$("#Source").val("");
+     var Alerts=$("#Alerts").val("");
+                 }
+                 
+                 });
+             }
+         return false;
+     });    
+     });
+     </script>
+</head>
+     <body ng-controller="Rform">
+         <div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4 class="alert-heading"> Platform3Solutions</h4>
+    </div>
+         <div class = "container">
+ <form class="form-horizontal" id="rform">
+ <fieldset>
+    <legend> Tell us about yourself </legend>
+    <div class="form-group">
+        <label for="Firstname" class="col-md-2 control-label">Firstname</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" name="Firstname" id="Firstname" placeholder="First name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Lastname" class="col-md-2 control-label">Lastname</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" name="Lastname" id="Lastname" placeholder="Last name">
+      </div>
+    </div>
+      <div class="form-group">
+      <label for="Email" class="col-md-2 control-label">Email</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" name="Email" id="Email" placeholder="Email ID">
+      </div>
+    </div>
+       <div class="form-group">
+      <label for="Mobile" class="col-md-2 control-label">Mobile</label>
+      <div class="col-md-6">
+        <input type="number" class="form-control" name="Mobile" id="Mobile" placeholder="Mobile number">
+      </div>
+    </div>
+      <div class="form-group">
+      <label for="Address" class="col-md-2 control-label">Address</label>
+      <div class="col-md-6">
+        <textarea class="form-control" rows="3" name="Address" id="Address"></textarea>
+        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Password" class="col-md-2 control-label">Password</label>
+      <div class="col-md-6">
+        <input type="password" class="form-control" name="Password" id="Password" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 control-label">Gender</label>
+      <div class="col-md-6">
+        <div class="radio">
+          <label>
+            <input type="radio" name="Gender" id="Gender" value="Male" checked="">
+            Male
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="Gender" id="Gender" value="Female">
+            Female
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Source" class="col-md-2 control-label">How did you hear about us?</label>
+      <div class="col-md-6">
+        <select class="form-control" name="Source" id="Source">
+          <option>Select</option>
+          <option>Company Website</option>
+          <option>Social Media</option>
+          <option>Friends/Referrals</option>
+          <option>other</option>
+          </select>
+      </div>
+    </div>
+      <div class="checkbox">
+      <label for="Alerts" class="col-md-2 control-label"></label>
+      <div class="col-md-6">
+          <label>
+            <input type="checkbox" name="Alerts" id="Alerts"> Subscribe for News alerts
+          </label>
+        </div>
+          <span id="msg"> </span>
+    <div class="form-group">
+      <div class="col-md-6 col-md-offset-2">
+          <BR>
+          <BR>
+         <button type="submit" id="submit" name="submit" class="btn btn-primary">Submit</button>
+        <button type="reset"  class="btn btn-default">Cancel</button>
+       
+      </div>
+    </div>
+  </fieldset>
+</form>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="jquery-3.3.1.js"></script>
+     <script type="text/javascript" src="bootstrap.js"></script>
+     <script type="text/javascript" src="Angular.js"></script>
+     <link rel="stylesheet" href="Bootstrap.css"/>
+     
+      
+     <body>   
+        <div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4 class="alert-heading">Logout Successful!</h4>
+  <p class="mb-0">Thanks for vising our website <a href="#" class="alert-link"></a></p>
+      </div>
+                <button type="button" id="Edit" name="Edit" class="btn btn-success">Re-login</button>
+               <button type="button" id="new" name="new" class="btn btn-info">create new account</button>
+         <script>
+document.getElementById("Edit").onclick = function() {
+  window.location.href = "http://localhost/Newform/validate1.html";
+};   
+         </script>
+
+             <script>
+document.getElementById("new").onclick = function() {
+  window.location.href = "http://localhost/Newform/Rform.html";
+};
+</script>
+         
+        </body>
+    </head>
+
+</html>
